@@ -20,10 +20,13 @@ const LoginScreen = ({ navigation }) => {
                 password,
                 email,
             });
-            if (data.data.error) {
-                alert(data.data.error)
+
+            const dados = data.data
+
+            if (dados && dados.error) {
+                alert(dados.error)
             } else {
-                navigation.navigate('ChatMessage');
+                navigation.navigate('ChatMessage', { user: dados });
             }
         } else {
             alert('Falta preencher campos');
@@ -37,10 +40,14 @@ const LoginScreen = ({ navigation }) => {
                 password,
             });
 
-            if (data.data && data.data.error) {
-                alert(data.data.error)
+            const dados = data.data;
+
+            if (dados && dados.error) {
+                alert(dados.error)
             } else {
-                navigation.navigate('ChatMessage');
+                console.log(dados);
+                
+                navigation.navigate('ChatMessage', { user: dados });
             }
         } else {
             alert('Faltam preencher campos');
