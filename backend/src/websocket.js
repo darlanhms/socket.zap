@@ -17,6 +17,22 @@ exports.setupWebsocket = (server) => {
             user: user
         });
 
+        socket.on('joinTalk', (username) => {
+            
+        });
+
+        socket.on('leaveTalk', (username) => {
+
+        });
+
+        socket.on('typingTalk', (username) => {
+
+        });
+
+        socket.on('stopTypingTalk', (username) => {
+
+        });
+
     });
 };
 
