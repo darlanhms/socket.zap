@@ -2,6 +2,7 @@ const express = require('express'); //importando a biblioteca "express"
 const mongoose = require('mongoose'); //importando a biblioteca "mongoose"
 const cors = require('cors');
 const http = require('http');
+const routes = require('./routes');
 const { setupWebsocket } = require("./websocket");
 
 const app = express();
@@ -19,6 +20,7 @@ mongoose.connect(mongoServer, {
 
 app.use(cors());
 app.use(express.json());
+app.use(routes);
 
 server.listen(port, () => {
     console.log("servidor ok porta: ", port);
