@@ -7,7 +7,7 @@ const app = express();
 const server = http.Server(app);
 
 const port = 3000;
-const mongoServer = 'mongodb://localhost:27017/socket.zap-db';
+const mongoServer = 'mongodb://localhost:27017/socket-zap-db';
 
 mongoose.connect(mongoServer, {
     useNewUrlParser: true,
