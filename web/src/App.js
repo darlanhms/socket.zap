@@ -1,10 +1,20 @@
-import React from 'react';
-import './App.css';
+import {
+  createNavigator,
+  SwitchRouter,
+} from "@react-navigation/core";
 
-function App() {
-  return (
-    <div></div>
-  );
-}
+import ChatMessage from './screens/ChatMessage';
+import LoginScreen from './screens/LoginScreen';
+import AppView from "./AppView";
 
-export default App;
+
+const AppNavigator = createNavigator(
+  AppView,
+  SwitchRouter({
+    Login: LoginScreen,
+    ChatMessage,
+  }),
+  {}
+);
+
+export default AppNavigator;
