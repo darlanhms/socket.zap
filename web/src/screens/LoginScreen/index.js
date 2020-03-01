@@ -3,7 +3,7 @@ import './index.css';
 import { Form, Button } from 'react-bootstrap';
 import api from '../../services/api';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {    
     const [cadastro, setCadastro] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -20,18 +20,31 @@ const LoginScreen = () => {
                 password,
                 email,
             });
-            console.log(data);
+            if (data.data.error) {
+                alert(data.data.error)
+            } else {
+                navigation.navigate('ChatMessage');
+            }
         } else {
-            alert('Falta preencher campos')
+            alert('Falta preencher campos');
         }
     }
 
     const handleSubmitLogin = async () => {
-        const data = await api.post('/users/login', {
-            username,
-            password,
-        });
-        console.log(data);
+        if (username && password) {
+            const data = await api.post('/users/login', {
+                username,
+                password,
+            });
+
+            if (data.data && data.data.error) {
+                alert(data.data.error)
+            } else {
+                navigation.navigate('ChatMessage');
+            }
+        } else {
+            alert('Faltam preencher campos');
+        }
     }
     
     return (
