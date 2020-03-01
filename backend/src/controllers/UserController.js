@@ -21,14 +21,16 @@ module.exports = {
         })
     },
 
-    create: function (req, res) {
+    create: async function (req, res) {
 
         let { name, username, email, password } = req.body;
 
         if (password)
             password = saltHashPassword(password);
 
-        if (!checkUsername(username)) {
+        const checkUser = await User.findOne({ username }) ? true : false;
+        
+        if (!checkUser) {
             User.create({
                 name,
                 username,
@@ -46,8 +48,4 @@ module.exports = {
 
     }
 
-}
-
-async function checkUsername (username) {
-    return await User.findOne({ username }) ? true : false;
 }
