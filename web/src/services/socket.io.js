@@ -1,6 +1,7 @@
 import socketio from 'socket.io-client';
+const config = require('./config.json');
 
-const socket = socketio('http://192.168.0.113:3000', {
+const socket = socketio(config.servidor, {
     autoConnect: false,
 });
 

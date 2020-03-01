@@ -1,7 +1,8 @@
 import axios from 'axios';
+const config = require('./config.json');
 
 const api = axios.create({
-    baseURL: 'http://192.168.0.113:3000'
+    baseURL: config.servidor
 });
 
-export default api;
+export default api; 

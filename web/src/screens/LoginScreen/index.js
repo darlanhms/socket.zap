@@ -42,12 +42,14 @@ const LoginScreen = ({ navigation }) => {
 
             const dados = data.data;
 
-            if (dados && dados.error) {
-                alert(dados.error)
+            if (dados) {
+                if (dados && dados.error) {
+                    alert(dados.error)
+                } else {
+                    navigation.navigate('Chat', { user: dados });
+                }
             } else {
-                console.log(dados);
-                
-                navigation.navigate('Chat', { user: dados });
+                alert('Usuário ou senha incorretos')
             }
         } else {
             alert('Faltam preencher campos');
