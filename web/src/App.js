@@ -12,7 +12,7 @@ const AppNavigator = createNavigator(
   AppView,
   SwitchRouter({
     Login: LoginScreen,
-    ChatMessage,
+    Chat: ChatMessage,
   }),
   {}
 );

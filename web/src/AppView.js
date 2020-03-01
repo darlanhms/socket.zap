@@ -19,7 +19,7 @@ export default class AppView extends Component {
             <Link routeName={"Login"} navigation={navigation}>
               Login
             </Link>
-            <Link routeName={"ChatMessage"} navigation={navigation}>
+            <Link routeName={"Chat"} navigation={navigation}>
               Converse
             </Link>
           </Nav>

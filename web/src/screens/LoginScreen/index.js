@@ -26,7 +26,7 @@ const LoginScreen = ({ navigation }) => {
             if (dados && dados.error) {
                 alert(dados.error)
             } else {
-                navigation.navigate('ChatMessage', { user: dados });
+                navigation.navigate('Chat', { user: dados });
             }
         } else {
             alert('Falta preencher campos');
@@ -47,7 +47,7 @@ const LoginScreen = ({ navigation }) => {
             } else {
                 console.log(dados);
                 
-                navigation.navigate('ChatMessage', { user: dados });
+                navigation.navigate('Chat', { user: dados });
             }
         } else {
             alert('Faltam preencher campos');
