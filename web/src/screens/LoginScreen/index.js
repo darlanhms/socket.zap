@@ -9,25 +9,18 @@ const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [global, setGlobal] =  useGlobal();
-    const [access_token, setAccess_token] = useState('')
 
     useEffect(() => {
-        setAccess_token(global.acces_token);
-        if (!access_token) {
-            setAccess_token(localStorage.getItem('token'));
-        }
-        if (access_token) {
-            navigation.navigate('Chat');
+        if (!global.access_token) {
+            setGlobal({ access_token: localStorage.getItem('token') });
         }
     }, []);
 
     useEffect(() => {
-        console.log(access_token);
-        
-        if (access_token) {
+        if (global.access_token) {
             navigation.navigate('Chat');
         }
-    }, [access_token])
+    }, [global.access_token])
 
     const handleChangeScreen = () => {
         setCadastro(true);

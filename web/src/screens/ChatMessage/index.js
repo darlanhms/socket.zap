@@ -13,6 +13,8 @@ const ChatMessage = ({ navigation }) => {
     useEffect(() => {
         if (!global.acces_token && !localStorage.getItem('token')) {
             navigation.navigate('Login')
+        } else {
+            setGlobal({ access_token: (localStorage.getItem('token') || global.acces_token)})
         }
         setCurrentMessages([
             {
