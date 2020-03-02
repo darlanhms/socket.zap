@@ -10,3 +10,9 @@
 .formMensagem button {
     padding: .375rem 2.75rem;
 }
+.divMessages {
+    position: absolute;
+    bottom: 60px;
+    left: 0px;
+    width: 100%;
+}

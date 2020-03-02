@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useGlobal } from 'reactn';
 import './index.css';
 import { connect } from '../../services/socket.io';
 import { Col, Row } from 'react-bootstrap';
@@ -7,15 +7,35 @@ import ListaChat from '../../components/ListaChat';
 
 const ChatMessage = ({ navigation }) => {
     const [user, setUser] = useState({});
+    const [currentMessages, setCurrentMessages] = useState([]);
+    const [global, setGlobal] = useGlobal();
 
     useEffect(() => {
-        if (navigation.getParam('user') && navigation.getParam('user').username) {
-            setUser(navigation.getParam('user'));
-            connect();
+        if (!global.acces_token && !localStorage.getItem('token')) {
+            navigation.navigate('Login')
         }
-        //  else {
-        //     navigation.navigate('Login')
-        // }
+        setCurrentMessages([
+            {
+                username: 'zezinho',
+                mensagem: 'alo'
+            },
+            {
+                username: 'carlinho',
+                mensagem: 'teste'
+            },
+            {
+                username: 'joaozinhp',
+                mensagem: 'mensagem 3'
+            },
+            {
+                username: 'alberto',
+                mensagem: 'ksjaskdgjksjfsd'
+            },
+            {
+                username: 'cleison',
+                mensagem: 'teste ultimo'
+            },
+        ])
     }, []);
     
     return (
@@ -25,7 +45,7 @@ const ChatMessage = ({ navigation }) => {
                     <ListaChat />
                 </Col>  
                 <Col md={9}>
-                    <Chat/>
+                    <Chat messages={currentMessages}/>
                 </Col>
             </Row>
         </div>

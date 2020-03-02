@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 setGlobal({
     currentUser: '',
+    access_token: ''
 });
 
 const App = createBrowserApp(AppNavigator)

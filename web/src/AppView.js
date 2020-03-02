@@ -1,6 +1,5 @@
 import React, { Component } from "reactn";
 import { SceneView } from "@react-navigation/core";
-import { Link } from "@react-navigation/web";
 import { Navbar, Nav } from 'react-bootstrap';
 import './index.css'
 

@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useGlobal } from 'reactn';
 import './index.css';
 import { Form, Button } from 'react-bootstrap';
 import api from '../../services/api';
 
-const LoginScreen = ({ navigation }) => {    
+const LoginScreen = ({ navigation }) => {
     const [cadastro, setCadastro] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [global, setGlobal] =  useGlobal();
+    const [access_token, setAccess_token] = useState('')
+
+    useEffect(() => {
+        setAccess_token(global.acces_token);
+        if (!access_token) {
+            setAccess_token(localStorage.getItem('token'));
+        }
+        if (access_token) {
+            navigation.navigate('Chat');
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log(access_token);
+        
+        if (access_token) {
+            navigation.navigate('Chat');
+        }
+    }, [access_token])
 
     const handleChangeScreen = () => {
-        setCadastro(true)
+        setCadastro(true);
     }
 
     const handleSubmitCadastro = async () => {
@@ -21,11 +41,14 @@ const LoginScreen = ({ navigation }) => {
                 email,
             });
 
-            const dados = data.data
+            const dados = data.data;
 
             if (dados && dados.error) {
                 alert(dados.error)
             } else {
+                if (dados.token) {
+                    localStorage.setItem('token', dados.token);
+                }
                 navigation.navigate('Chat', { user: dados });
             }
         } else {
@@ -46,6 +69,7 @@ const LoginScreen = ({ navigation }) => {
                 if (dados && dados.error) {
                     alert(dados.error)
                 } else {
+                    localStorage.setItem('token', dados.token);
                     navigation.navigate('Chat', { user: dados });
                 }
             } else {
