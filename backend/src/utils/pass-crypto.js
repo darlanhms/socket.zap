@@ -1,6 +1,5 @@
 var crypto = require('crypto');
-
-const nSalt = 'D!@#D$1!@#$vF#%5vEY&&*&+_`^Ç';
+const config = require('../config');
 
 /**
  * hash password with sha512.
@@ -13,5 +12,5 @@ function sha512 (password, salt) {
 };
 
 exports.saltHashPassword = (userpassword) => {
-    return sha512(userpassword, nSalt);
+    return sha512(userpassword, config.saltKey);
 }

@@ -1,0 +1,5 @@
+{
+    "port": 3000,
+    "saltKey": "D!@#D$1!@#$vF#%5v!@#$vF#%5vEY&&*&+_`^ÇEY&&*&+_`^Ç",
+    "mongoServer": "mongodb://localhost:27017/socket-zap-db"
+}

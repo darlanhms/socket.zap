@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const { saltHashPassword } = require('../utils/pass-crypto');
+const { createUserToken } = require('../utils/auth');
 
 module.exports = {
 
@@ -14,9 +15,17 @@ module.exports = {
             username,
             password
         }).then( function (result) {
-            if (result && result.password) {
-                result.password = undefined;
+
+            if (result) {
+                if (result.password)
+                    result.password = undefined;
+    
+                if (result._id) {
+                    result = {...result}._doc;
+                    result.token = createUserToken(result.id);
+                }
             }
+
             res.json(result);
         })
     },
@@ -29,7 +38,7 @@ module.exports = {
             password = saltHashPassword(password);
 
         const checkUser = await User.findOne({ username }) ? true : false;
-        
+
         if (!checkUser) {
             User.create({
                 name,
@@ -37,9 +46,17 @@ module.exports = {
                 email,
                 password
             }).then( function (result) {
-                if (result && result.password) {
-                    result.password = undefined;
+
+                if (result) {
+                    if (result.password)
+                        result.password = undefined;
+    
+                    if (result._id) {
+                        result = {...result}._doc;
+                        result.token = createUserToken(result.id);
+                    }
                 }
+
                 res.json(result);
             });
         } else {
