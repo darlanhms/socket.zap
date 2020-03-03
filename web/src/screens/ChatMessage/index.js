@@ -6,7 +6,6 @@ import Chat from '../../components/Chat';
 import ListaChat from '../../components/ListaChat';
 
 const ChatMessage = ({ navigation }) => {
-    const [user, setUser] = useState({});
     const [currentMessages, setCurrentMessages] = useState([]);
     const [global, setGlobal] = useGlobal();
 
@@ -19,7 +18,7 @@ const ChatMessage = ({ navigation }) => {
         setCurrentMessages([
             {
                 username: 'zezinho',
-                mensagem: 'alo'
+                mensagem: 'alasdasdaso'
             },
             {
                 username: 'carlinho',
@@ -31,8 +30,8 @@ const ChatMessage = ({ navigation }) => {
             },
             {
                 username: 'alberto',
-                mensagem: 'ksjaskdgjksjfsd'
-            },
+                mensagem: 'tstessss'
+                },
             {
                 username: 'cleison',
                 mensagem: 'teste ultimo'
@@ -43,10 +42,10 @@ const ChatMessage = ({ navigation }) => {
     return (
         <div className='mainChat'>
             <Row>
-                <Col className='listaMensagens' md={3}>
+                <Col  md={3} className='listaMensagens'>
                     <ListaChat />
                 </Col>  
-                <Col md={9}>
+                <Col md={9} style={{backgroundColor: "#ffffdb", borderRadius: "0px 10px 10px 0px", overflow: 'auto'}}>
                     <Chat messages={currentMessages}/>
                 </Col>
             </Row>

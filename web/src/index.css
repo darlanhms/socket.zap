@@ -8,21 +8,14 @@ html, body, #root, #main {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.navbar-home {
-  text-align: right;
-  margin-right: 0 !important;
-  margin-left: auto !important;
+.buttonNav {
+  margin: 0px 10px 0px auto
 }
-.navbar-home a {
-  color: #000000;
-  margin: 0px 5px;
-  text-decoration: none;
-  float: right;
+.buttonNav .dropdown-menu {
+  right: 0;
+  left: unset;
 }
-.navbar-home a:hover {
-  color: #9b9b9b;
-  text-decoration: none;
-}
+#dropdown-nav:after { content: none }
 .buttonCenter {
   display: block !important;
   margin: 0px auto;

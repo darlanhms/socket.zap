@@ -6,6 +6,7 @@
     bottom: 10px;
     left: 0px;
     padding: 5px;
+    background-color: transparent;
 }
 .formMensagem button {
     padding: .375rem 2.75rem;
@@ -15,4 +16,14 @@
     bottom: 60px;
     left: 0px;
     width: 100%;
+    overflow: hidden;
+}
+.divMessages .list-group-item {
+    margin: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.divMessages .list-group-item p {
+    font-weight: bold;
+    margin-bottom: 3px;
 }

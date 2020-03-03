@@ -9,12 +9,23 @@ const Chat = ({ messages }) => {
         
     }
 
+    const generateRandomColor = () => {
+        let r,g,b = 0;
+        r = Math.floor(Math.random() * 256);
+        g = Math.floor(Math.random() * 256);
+        b = Math.floor(Math.random() * 256);
+        return `rgba(${r}, ${g}, ${b})`
+    }
+
     return (
         <div>
             <ListGroup className='divMessages'>
                 {messages && messages.length > 0 ? messages.map(message => {
                     return (
-                        <ListGroup.Item key={Math.random() * 1000000}>{message.mensagem}</ListGroup.Item>
+                        <ListGroup.Item key={Math.random() * 1000000}>
+                            <p style={{color: generateRandomColor()}}>{message.username}</p>
+                            {message.mensagem}
+                        </ListGroup.Item>
                     )
                 }) : <></>}
             </ListGroup>
