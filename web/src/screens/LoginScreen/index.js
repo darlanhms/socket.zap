@@ -26,6 +26,17 @@ const LoginScreen = ({ navigation }) => {
         setCadastro(true);
     }
 
+    const handleKeyPress = ({ key }) => {
+        if (key === 'Enter') {
+            if (cadastro) {
+                handleSubmitCadastro();
+            } else {
+                handleSubmitLogin();
+            }
+        }
+        
+    }
+
     const handleSubmitCadastro = async () => {
         if (username && password && email) {
             const data = await api.post('/users/create', {
@@ -98,6 +109,7 @@ const LoginScreen = ({ navigation }) => {
                     <Form.Label>Senha</Form.Label>
                     <Form.Control 
                     defaultValue={password}
+                    onKeyPress={handleKeyPress}
                     onChange={e => setPassword(e.target.value)}
                     type="password" 
                     placeholder="Informe sua melhor senha" />
@@ -121,7 +133,8 @@ const LoginScreen = ({ navigation }) => {
                     <Form.Label>Senha</Form.Label>
                     <Form.Control 
                     defaultValue={password}
-                    username={password} 
+                    username={password}
+                    onKeyPress={handleKeyPress}
                     onChange={e => setPassword(e.target.value)}
                     type="password" 
                     placeholder="Informe sua melhor senha" 
