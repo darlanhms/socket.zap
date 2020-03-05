@@ -30,14 +30,14 @@ const Chat = ({ messages }) => {
                 }) : <></>}
             </ListGroup>
             <Row className='formMensagem'>
-                <Col xs={10}>
+                <Col lg={10} md={8} sm={6}>
                     <Form.Control 
                     defaultValue={message}
                     onChange={e => setMessage(e.target.value)}
                     type="text" 
                     placeholder="Digite a mensagem que deseja enviar" />
                 </Col>
-                <Col xs={2}>
+                <Col lg={2} md={4} sm={6}>
                 <Button variant="dark" onClick={() => handleSendMessage()} className='buttonCenter'>
                         Enviar
                 </Button>

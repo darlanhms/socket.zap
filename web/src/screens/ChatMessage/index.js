@@ -44,8 +44,8 @@ const ChatMessage = ({ navigation }) => {
             <Row>
                 <Col  md={3} className='listaMensagens'>
                     <ListaChat />
-                </Col>  
-                <Col md={9} style={{backgroundColor: "#ffffdb", borderRadius: "0px 10px 10px 0px", overflow: 'auto'}}>
+                </Col>
+                <Col md={9} className='colChat'>
                     <Chat messages={currentMessages}/>
                 </Col>
             </Row>
